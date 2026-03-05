@@ -164,136 +164,44 @@ class ManiaInfo {
 		'pianoblack' => 4
 	];*/
 	
-	public static var AvailableManiaDefault:Array<String> = [ //for chart editor
-		'1k',
-		'2k', //2k
-		'3k', //3k
-		'4k', //4k
-		'5k', //5k
-		'6k', //6k
-		'7k', //7k
-		'8k', //8k
-		'9k', //9k
-		'10k', //10k
-		'11k', //11k
-		'12k', //12k
-		'13k', //13k
-		'14k', //14k
-		'15k', //15k
-		'16k', //16k
-		'17k', //17k
-		'18k', //18k
-		//27, //14k
-		//28, //15k
-		//29, //16k
-		//30, //17k
-		//31, //18k
-		'19k', //19k
-		//32, //20k
-		'21k', //21k
-		'50k', //50k
-		'piano', //Piano
-		'105k' //105
-	];
+public static var AvailableManiaDefault:Array<String> = [ //for chart editor
+	'1k','2k','3k','4k','5k','6k','7k','8k','9k','10k',
+	'11k','12k','13k','14k','15k','16k','17k','18k','19k',
+	'21k','50k','piano','105','200','300','400','500','600','700','800','900','1000'
+];
+
+public static function updateAvailableMania() {
 	
-	public static function updateAvailableMania() {
-		
-	}
-	
-	public static var AvailableMania:Array<String> = [ //for chart editor
-		'1k',
-		'2k', //2k
-		'3k', //3k
-		'4k', //4k
-		'5k', //5k
-		'6k', //6k
-		'7k', //7k
-		'8k', //8k
-		'9k', //9k
-		'10k', //10k
-		'11k', //11k
-		'12k', //12k
-		'13k', //13k
-		'14k', //14k
-		'15k', //15k
-		'16k', //16k
-		'17k', //17k
-		'18k', //18k
-		'19k', //19k
-		'20k', //20k
-		'21k', //21k
-		'22k', //22k
-		'24k', //24k
-		'26k', //26k
-		'28k', //28k
-		'30k', //30k
-		'32k', //32k
-		'34k', //34k
-		'36k', //36k
-		'50k', //50k
-		'piano', //Piano
-		'105k' //105
-	];
-	
-	public static var ManiaConvert:Map<Int, String> = [ //for upcoming unhardcoded manias holy shit
-		6 => "1k", //1k
-		7 => "2k", //2k
-		8 => "3k", //3k
-		0 => "4k", //4k
-		3 => "5k", //5k
-		1 => "6k", //6k
-		4 => "7k", //7k
-		5 => "8k", //8k
-		2 => "9k", //9k
-		27 => "10k", //10k
-		28 => "11k", //11k
-		//25 => "10k", //10k
-		//26 => "11k", //11k
-		21 => "12k", //12k
-		20 => "13k", //13k
-		29 => "14k",
-		30 => "15k",
-		31 => "16k",
-		32 => "17k",
-		33 => "18k",
-		//27 => "14k", //14k
-		//28 => "15k", //15k
-		//29 => "16k", //16k
-		//30 => "17k", //17k
-		//31 => "18k", //18k
-		23 => "19k", //19k
-		//32 => "20k", //20k
-		22 => "21k", //21k
-		24 => "50k", //50k
-		25 => "piano", //Piano
-		26 => "105k" //105
-	];
-	
-	public static var ManiaConvertBack:Map<String, Int> = [ //for sideways compat
-		"1k" => 6, //1k
-		"2k" => 7, //2k
-		"3k" => 8, //3k
-		"4k" => 0, //4k
-		"5k" => 3, //5k
-		"6k" => 1, //6k
-		"7k" => 4, //7k
-		"8k" => 5, //8k
-		"9k" => 2, //9k
-		"10k" => 27, //10k
-		"11k" => 28, //11k
-		"12k" => 21, //12k
-		"13k" => 20, //13k
-		"14k" => 29,
-		"15k" => 30,
-		"16k" => 31,
-		"17k" => 32,
-		"18k" => 33,
-		"19k" => 23, //19k
-		"21k" => 22, //21k
-		"50k" => 24, //50k
-		"piano" => 25, //Piano
-		"105k" => 26 //105
-	];
+}
+
+public static var AvailableMania:Array<String> = [ //for chart editor
+	'1k','2k','3k','4k','5k','6k','7k','8k','9k','10k',
+	'11k','12k','13k','14k','15k','16k','17k','18k','19k',
+	'20k','21k','22k','24k','26k','28k','30k','32k','34k',
+	'36k','50k','piano','105','200','300','400','500','600','700','800','900','1000'
+];
+
+public static var ManiaConvert:Map<Int, String> = [ //for upcoming unhardcoded manias
+	6 => "1k",7 => "2k",8 => "3k",0 => "4k",3 => "5k",
+	1 => "6k",4 => "7k",5 => "8k",2 => "9k",
+	27 => "10k",28 => "11k",21 => "12k",20 => "13k",
+	29 => "14k",30 => "15k",31 => "16k",32 => "17k",33 => "18k",
+	23 => "19k",22 => "21k",24 => "50k",25 => "piano",
+	26 => "105", 27 => "200", 28 => "300", 29 => "400",
+	30 => "500", 31 => "600", 32 => "700", 33 => "800",
+	34 => "900", 35 => "1000"
+];
+
+public static var ManiaConvertBack:Map<String, Int> = [ //for sideways compat
+	"1k" => 6,"2k" => 7,"3k" => 8,"4k" => 0,"5k" => 3,
+	"6k" => 1,"7k" => 4,"8k" => 5,"9k" => 2,
+	"10k" => 27,"11k" => 28,"12k" => 21,"13k" => 20,
+	"14k" => 29,"15k" => 30,"16k" => 31,"17k" => 32,"18k" => 33,
+	"19k" => 23,"21k" => 22,"50k" => 24,"piano" => 25,
+	"105" => 26, "200" => 27, "300" => 28, "400" => 29,
+	"500" => 30, "600" => 31, "700" => 32, "800" => 33,
+	"900" => 34, "1000" => 35
+];
 	
 	public static function GetManiaInfo(mania:String):SwagMania {
 		//they're now string based
