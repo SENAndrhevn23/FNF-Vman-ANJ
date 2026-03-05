@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin' VMan Engine" file="funkin" packageName="com.vman_2002.fnfvmanengine" package="com.vman_2002.fnfvmanengine" main="Main" version="0.2.7.1" company="VMan_2002" />
+	<app title="Friday Night Funkin' VMan Engine ANJ" file="funkin" packageName="com.vman_2002.fnfvmanengine" package="com.vman_2002.fnfvmanengine" main="Main" version="0.2.7.1" company="VMan_2002" />
 	<app title="Friday Night Funkin' VMan Engine (Debug)" if="debug" />
 	<app title="Friday Night Funkin' VMan Engine (32-bit)" unless="debug" if="32bit" />
 
