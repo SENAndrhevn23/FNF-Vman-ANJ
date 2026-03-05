@@ -764,13 +764,13 @@ class ChartingState extends MusicBeatState {
 		check_stackActive = new FlxUICheckBox(10, 10, null, null, "Enable notestacking", 100);
 		check_stackActive.name = 'check_stackActive';
 
-		stepperStackNum = new FlxUINumericStepper(10, 30, 4, 4, 0, 999999);
+		stepperStackNum = new FlxUINumericStepper(10, 30, 4, 4, -100, 999999);
 		stepperStackNum.name = 'stack_count';
 
-		stepperStackOffset = new FlxUINumericStepper(10, 50, 0.25, 1, 0, 999999);
+		stepperStackOffset = new FlxUINumericStepper(10, 50, 0.25, 1, -100, 999999);
 		stepperStackOffset.name = 'stack_offset';
 
-		stepperStackSideOffset = new FlxUINumericStepper(10, 70, 1, 0, -9999, 9999);
+		stepperStackSideOffset = new FlxUINumericStepper(10, 70, 1, -100, -9999, 9999);
 		stepperStackSideOffset.name = 'stack_sideways';
 
 		tab_group_stacking.add(check_stackActive);
