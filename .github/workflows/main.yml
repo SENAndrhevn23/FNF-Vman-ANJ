@@ -2,8 +2,6 @@ name: Windows Build
 
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -11,46 +9,32 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # 1️⃣ Checkout your repository
       - uses: actions/checkout@v4.1.7
 
-      # 2️⃣ Install Haxe
       - uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.3.4
 
-      # 3️⃣ Setup Haxelib and hxcpp
       - name: Install Haxelib & hxcpp
+        shell: cmd
         run: |
-          REM Create a safe Haxelib directory
           mkdir %HOMEDRIVE%%HOMEPATH%\haxelib
-
-          REM Configure Haxelib to use it
           haxelib setup %HOMEDRIVE%%HOMEPATH%\haxelib
-
-          REM Install hxcpp silently
           haxelib install hxcpp > NUL
-
-          REM Run your Windows setup script
           .\setup\windows.bat
-        shell: cmd
 
-      # 4️⃣ Skip SScript setup mode
       - name: Skip SScript setup mode
+        shell: cmd
         run: echo oy9:showMacroty8:loopCosti25y10:includeAllfg >> %USERPROFILE%\settings.cocoa
-        shell: cmd
 
-      # 5️⃣ Create a version tag file
       - name: Create Version Tag
+        shell: cmd
         run: echo %GITHUB_RUN_ID% > VERSION
-        shell: cmd
 
-      # 6️⃣ Compile the project
       - name: Compile
-        run: haxelib run lime build windows --app-version="4.0.0-%GITHUB_RUN_ID%" -D officialBuild
         shell: cmd
+        run: haxelib run lime build windows --app-version="4.0.0-%GITHUB_RUN_ID%" -D officialBuild
 
-      # 7️⃣ Upload artifact
       - name: Publish Artifact
         uses: actions/upload-artifact@v4.3.4
         with:
