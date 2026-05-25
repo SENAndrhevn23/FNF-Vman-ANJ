@@ -764,20 +764,68 @@ class ChartingState extends MusicBeatState {
 		check_stackActive = new FlxUICheckBox(10, 10, null, null, "Enable notestacking", 100);
 		check_stackActive.name = 'check_stackActive';
 
-		stepperStackNum = new FlxUINumericStepper(10, 30, 4, 4, -100, 999999);
+		stepperStackNum = new FlxUINumericStepper(10, 30, 4, 4, 0, 999999);
 		stepperStackNum.name = 'stack_count';
 
-		stepperStackOffset = new FlxUINumericStepper(10, 50, 0.25, 1, -100, 999999);
+		stepperStackOffset = new FlxUINumericStepper(10, 50, 0.25, 1, 0, 999999);
 		stepperStackOffset.name = 'stack_offset';
 
-		stepperStackSideOffset = new FlxUINumericStepper(10, 70, 1, -100, -9999, 9999);
+		stepperStackSideOffset = new FlxUINumericStepper(10, 70, 1, 0, -9999, 9999);
 		stepperStackSideOffset.name = 'stack_sideways';
+
+		var doubleSpamNum:FlxUIButton = new FlxUIButton(160, 26, 'x2 Count', function() {
+			stepperStackNum.value *= 2;
+		});
+		var halfSpamNum:FlxUIButton = new FlxUIButton(230, 26, 'x0.5 Count', function() {
+			stepperStackNum.value /= 2;
+		});
+
+		var doubleSpamOff:FlxUIButton = new FlxUIButton(160, 46, 'x2 Offset', function() {
+			stepperStackOffset.value *= 2;
+		});
+		var halfSpamOff:FlxUIButton = new FlxUIButton(230, 46, 'x0.5 Offset', function() {
+			stepperStackOffset.value /= 2;
+		});
+
+		var applySpam:FlxUIButton = new FlxUIButton(160, 70, 'Apply Spam', function() {
+			var notes = getSectionNotes();
+			if (notes == null) return;
+
+			var baseNotes = new Array<Array<Dynamic>>();
+			for (note in notes) {
+				baseNotes.push([note[0], note[1], note[2], note[3]]);
+			}
+
+			var count:Int = Std.int(Math.max(stepperStackNum.value, 0));
+			var offset:Float = stepperStackOffset.value;
+			if (offset <= 0) offset = 1;
+
+			for (dup in 1...count + 1) {
+				for (note in baseNotes) {
+					var copied:Array<Dynamic> = [note[0], note[1], note[2], note[3]];
+					copied[0] += (15000 / Conductor.bpm) * offset * dup;
+					copied[1] += Math.floor(stepperStackSideOffset.value);
+					notes.push(copied);
+				}
+			}
+
+			setSectionNotes(notes);
+			if (curNotesLayer == 0) {
+				osuScroller.setAmountForRow(curSection, _song.notes[curSection].sectionNotes.length);
+			}
+			updateGrid();
+		});
 
 		tab_group_stacking.add(check_stackActive);
 		tab_group_stacking.add(stepperStackNum);
 		tab_group_stacking.add(stepperStackOffset);
 		tab_group_stacking.add(stepperStackSideOffset);
-		
+		tab_group_stacking.add(doubleSpamNum);
+		tab_group_stacking.add(halfSpamNum);
+		tab_group_stacking.add(doubleSpamOff);
+		tab_group_stacking.add(halfSpamOff);
+		tab_group_stacking.add(applySpam);
+
 		tab_group_stacking.add(new FlxText(100, 30, 0, "Count"));
 		tab_group_stacking.add(new FlxText(100, 50, 0, "Offset"));
 		tab_group_stacking.add(new FlxText(100, 70, 0, "Sideways"));
